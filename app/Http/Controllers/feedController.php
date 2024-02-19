@@ -13,8 +13,9 @@ class feedController extends Controller
      */
     public function index()
     {
-        $feed = feed::latest()->paginate(5);
+        $feed = feed::latest()->paginate(1);
         return view ('feed.index',compact('feed'))->with('i', (request()->input('page', 1) -1) * 5);
+
     }
 
     /**
@@ -31,7 +32,8 @@ class feedController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'video' => ['required', 'mimes:mp4', 'max:10048']
+            'video' => ['required', 'mimes:mp4', 'max:10048'],
+            'caption' => ['nullable', 'string', 'max:100'],
         ]);
 
         $user = auth()->user();

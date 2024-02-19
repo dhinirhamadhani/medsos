@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\vidController;
 use App\Http\Controllers\feedController;
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +20,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('vidd', vidController::class);
 Route::resource('feed', feedController::class);
